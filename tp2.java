@@ -9,38 +9,81 @@ public class tp2 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner scan = new Scanner(System.in);
-		int longueur = 0;
-		int intervalle = 0;
-		int nombre = 0;
-		float a = 0;
-		float n = 0;
-		int max = 0;
-		/*
-		 * System.out.println("Entrer la longueur"); longueur = scan.nextInt();
-		 * System.out.println("Entrer l'intervalle"); intervalle =
-		 * scan.nextInt(); System.out.println("Entrer le nombre"); a =
-		 * scan.nextFloat(); System.out.println("Entrer la puissance"); n =
-		 * scan.nextFloat(); puissance(a,n);
-		 * System.out.println("Entrer le nombre"); nombre = scan.nextInt(); if
-		 * (nombrePremier(nombre) == true) { System.out.println("oui");
-		 * System.out.println(nombre); } else { System.out.println("non");
-		 * 
-		 * }
-		 * 
-		 * System.out.println("Entrer la longueur"); nombre = scan.nextInt();
-		 * System.out.println("Entrer l'intervalle"); max = scan.nextInt(); //
-		 * tablemulti(); int[] tab = new int[max / nombre]; tab =
-		 * tablemulti2(nombre, max); for (int i = 0; i <= (max / nombre); i++) {
-		 * System.out.println(tab[i]); }
-		 */
-		int[] tab1 = { 1, 2, 3, 4, 5 };
-		System.out.println(recherche(55, tab1));
-		int[] tab2 = { 1, 2, 3, 4, 5 };
-		System.out.println(recherche(5, tab2));
-		int[] tab3 = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
-		System.out.println(recherche(9, tab3));
-		int[] tab4 = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-		System.out.println(recherche(5, tab4));
+		int choix = 0;
+
+		System.out.println("Que voulez vous faire ?");
+		System.out.println("1. afficher une régle graduer");
+		System.out.println("2. faire un calcul de puissance");
+		System.out.println("3. Verifier si le nombre est un nombre premier");
+		System.out.println("4. Afficher la table de multiplication de 0 à 10");
+		System.out.println("5. Afficher la table de multiplication du chiffre jusqu'au maximum");
+		System.out.println("6. Afficher les exemples de recherche de tableaux");
+		choix = scan.nextInt();
+		
+		switch (choix) {
+		case 1:
+			int longueur = 0;
+			int intervalle = 0;
+			System.out.println("Entrer la longueur");
+			longueur = scan.nextInt();
+			System.out.println("Entrer l'intervalle");
+			intervalle = scan.nextInt();
+			regle(longueur, intervalle);
+			break;
+
+		case 2:
+			float a = 0;
+			float n = 0;
+			System.out.println("Entrer le nombre");
+			a = scan.nextFloat();
+			System.out.println("Entrer la puissance");
+			n = scan.nextFloat();
+			puissance(a, n);
+			break;
+
+		case 3:
+			int nombre = 0;
+			System.out.println("Entrer le nombre");
+			nombre = scan.nextInt();
+			if (nombrePremier(nombre) == true) {
+				System.out.println("oui c'est un nombre premier");
+			} else {
+				System.out.println("non ce n'est pas un nombre premier");
+
+			}
+			break;
+
+		case 4:
+			tablemulti();
+			break;
+		case 5:
+			int nb = 0;
+			int max = 0;
+			System.out.println("Entrer le nombre");
+			nb = scan.nextInt();
+			System.out.println("Entrer le max");
+			max = scan.nextInt();
+			int table[] = tablemulti2(nb, max);
+			for (int i = 0; i <= (max / nb); i++) {
+				System.out.println(table[i]);
+			}
+			break;
+		case 6:
+			int[] tab1 = { 1, 2, 3, 4, 5 };
+			System.out.println(recherche(55, tab1));
+			int[] tab2 = { 1, 2, 3, 4, 5 };
+			System.out.println(recherche(5, tab2));
+			int[] tab3 = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+			System.out.println(recherche(9, tab3));
+			int[] tab4 = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+			System.out.println(recherche(5, tab4));
+			break;
+			default :
+				System.out.println("Erreur, merci de ressayer");
+				break;
+
+		}
+
 
 		scan.close();
 	}
@@ -105,7 +148,7 @@ public class tp2 {
 		for (int i = 0; i < tab.length; i++) {
 			if (tab[i] == val) {
 				position = tab[i];
-			} 
+			}
 		}
 		return position;
 	}
