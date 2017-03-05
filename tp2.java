@@ -1,4 +1,3 @@
-package tp2;
 
 import java.util.Scanner;
 
@@ -27,17 +26,22 @@ public class tp2 {
 		 * System.out.println(nombre); } else { System.out.println("non");
 		 * 
 		 * }
+		 * 
+		 * System.out.println("Entrer la longueur"); nombre = scan.nextInt();
+		 * System.out.println("Entrer l'intervalle"); max = scan.nextInt(); //
+		 * tablemulti(); int[] tab = new int[max / nombre]; tab =
+		 * tablemulti2(nombre, max); for (int i = 0; i <= (max / nombre); i++) {
+		 * System.out.println(tab[i]); }
 		 */
-		System.out.println("Entrer la longueur");
-		nombre = scan.nextInt();
-		System.out.println("Entrer l'intervalle");
-		max = scan.nextInt();
-		// tablemulti();
-		int[] tab = new int[max / nombre];
-		tab = tablemulti2(nombre, max);
-		for (int i = 0; i <= (max / nombre); i++) {
-			System.out.println(tab[i]);
-		}
+		int[] tab1 = { 1, 2, 3, 4, 5 };
+		System.out.println(recherche(55, tab1));
+		int[] tab2 = { 1, 2, 3, 4, 5 };
+		System.out.println(recherche(5, tab2));
+		int[] tab3 = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+		System.out.println(recherche(9, tab3));
+		int[] tab4 = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+		System.out.println(recherche(5, tab4));
+
 		scan.close();
 	}
 
@@ -57,7 +61,7 @@ public class tp2 {
 		if (n == 0) {
 			resultat = 1;
 		}
-		// Si la puissance est négative
+		// Si la puissance est nÃ©gative
 		else if (n < 0) {
 			resultat = 1 / a;
 			a = 1 / a;
@@ -87,13 +91,23 @@ public class tp2 {
 
 	private static int[] tablemulti2(int nb, int max) {
 		int result = 0;
-		int[] table = new int[(max/nb)+1];
+		int[] table = new int[(max / nb) + 1];
 		int i = 0;
-		for(i=0;i<=max/nb;i++) {
+		for (i = 0; i <= max / nb; i++) {
 			result = nb * i;
-			table[i] = result;	
+			table[i] = result;
 		}
 		return table;
+	}
+
+	private static int recherche(int val, int[] tab) {
+		int position = -1;
+		for (int i = 0; i < tab.length; i++) {
+			if (tab[i] == val) {
+				position = tab[i];
+			} 
+		}
+		return position;
 	}
 
 	private static boolean nombrePremier(int nombre) {
@@ -103,7 +117,7 @@ public class tp2 {
 		if (nombre % 2 == 0) {
 			verif = true;
 		} else {
-			//Verification des diviseurs possible
+			// Verification des diviseurs possible
 			for (int i = 3; i < limite; i += 2) {
 				if (nombre % i == 0) {
 					verif = true;
@@ -121,4 +135,5 @@ public class tp2 {
 		}
 
 	}
+
 }
